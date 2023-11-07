@@ -1,4 +1,4 @@
-import { useFrame, useThree } from '@react-three/fiber'
+import { Size, useFrame, useThree } from '@react-three/fiber'
 import { useEffect, useMemo } from 'react'
 import * as THREE from 'three'
 
@@ -16,7 +16,7 @@ function getFullscreenTriangle() {
 // Basic shader postprocess based on the template https://gist.github.com/RenaudRohlinger/bd5d15316a04d04380e93f10401c40e7
 // USAGE: Simply call usePostprocess hook in your r3f component to apply the shader to the canvas as a postprocess effect
 const usePostProcess = () => {
-  const [{ dpr }, size, gl] = useThree((s) => [s.viewport, s.size, s.gl])
+  const [dpr, size, gl]: [number, Size, THREE.WebGLRenderer] = useThree((s) => [s.viewport.dpr, s.size, s.gl])
 
   const [screenCamera, screenScene, screen, renderTarget] = useMemo(() => {
     let screenScene = new THREE.Scene()
