@@ -11,9 +11,11 @@
   },
   "dependencies": {
     "@ducanh2912/next-pwa": "^9.4.0",
+    "@react-spring/three": "^9.7.3",
     "@react-three/drei": "^9.80.2",
     "@react-three/fiber": "^8.13.6",
     "glsl-random": "^0.0.5",
+    "leva": "^0.9.35",
     "next": "^13.4.13",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -34,7 +36,6 @@
     "glslify": "^7.1.1",
     "glslify-loader": "^2.0.0",
     "postcss": "^8.4.27",
-    "prettier": "^3.0.1",
     "raw-loader": "^4.0.2",
     "tailwindcss": "^3.3.3",
     "typescript": "^5.2.2",
@@ -46,6 +47,6 @@
     "build": "next build",
     "analyze": "ANALYZE=true next build",
     "start": "next start",
-    "prettier": "npx prettier --list-different \"./src/**/*.{ts,tsx,md}\" \"./app/**/*.{ts,tsx,md}\"\""
+    "prettier": "npx prettier --list-different \"./src/**/*.{ts,tsx,md}\" \"./app/**/*.{ts,tsx,md}\""
   }
 }

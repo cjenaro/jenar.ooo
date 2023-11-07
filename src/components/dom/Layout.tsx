@@ -28,6 +28,7 @@ const Layout = ({ children }) => {
           height: '100vh',
           pointerEvents: 'none',
         }}
+        shadows
         eventSource={ref}
         eventPrefix='client'
       />
