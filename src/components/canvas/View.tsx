@@ -4,6 +4,7 @@ import { forwardRef, Suspense, useImperativeHandle, useRef } from 'react'
 import { OrbitControls, PerspectiveCamera, View as ViewImpl } from '@react-three/drei'
 import { Three } from '@/helpers/components/Three'
 import { useControls } from 'leva'
+import { useFrame } from '@react-three/fiber'
 
 export type CommonProps = {
   color?: string
@@ -20,13 +21,22 @@ export const Common = ({ color }: CommonProps) => {
     fogColor: '#ff618a',
   })
 
+  // useFrame((state) => {
+  //   console.log(state.camera.position.x)
+  //   if (state.camera.position.x > 0) {
+  //     state.camera.position.x -= 0.1
+  //   } else {
+  //     state.camera.position.x = 9
+  //   }
+  // })
+
   return (
     <Suspense fallback={null}>
       {color && <color attach='background' args={[color]} />}
       <ambientLight intensity={1} />
       <fog attach='fog' color={fogColor} near={fog.near} far={fog.far} />
       <directionalLight castShadow color='#ff618a' position={lightPosition} intensity={intensity} />
-      <PerspectiveCamera makeDefault fov={40} position={[0, 0, 6]} />
+      <PerspectiveCamera fov={40} position={[9, 0, 8]} />
     </Suspense>
   )
 }
