@@ -4,7 +4,8 @@ import { forwardRef, Suspense, useImperativeHandle, useRef } from 'react'
 import { OrbitControls, PerspectiveCamera, View as ViewImpl } from '@react-three/drei'
 import { Three } from '@/helpers/components/Three'
 import { useControls } from 'leva'
-import { useFrame } from '@react-three/fiber'
+import { useGSAP } from '@gsap/react'
+import gsap from 'gsap'
 
 export type CommonProps = {
   color?: string
@@ -21,14 +22,19 @@ export const Common = ({ color }: CommonProps) => {
     fogColor: '#ff618a',
   })
 
-  // useFrame((state) => {
-  //   console.log(state.camera.position.x)
-  //   if (state.camera.position.x > 0) {
-  //     state.camera.position.x -= 0.1
-  //   } else {
-  //     state.camera.position.x = 9
-  //   }
-  // })
+  const cameraRef = useRef(null)
+  const cameraPosition = useRef({ x: 9, y: 0, z: 8 })
+
+  useGSAP(() => {
+    if (cameraRef.current) {
+      gsap.to(cameraRef.current.position, {
+        x: 0,
+        y: 0.9,
+        z: 3.5,
+        duration: 1,
+      })
+    }
+  })
 
   return (
     <Suspense fallback={null}>
@@ -36,7 +42,12 @@ export const Common = ({ color }: CommonProps) => {
       <ambientLight intensity={1} />
       <fog attach='fog' color={fogColor} near={fog.near} far={fog.far} />
       <directionalLight castShadow color='#ff618a' position={lightPosition} intensity={intensity} />
-      <PerspectiveCamera fov={40} position={[9, 0, 8]} />
+      <PerspectiveCamera
+        makeDefault
+        ref={cameraRef}
+        fov={40}
+        position={[cameraPosition.current.x, cameraPosition.current.y, cameraPosition.current.z]}
+      />
     </Suspense>
   )
 }

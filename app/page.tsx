@@ -1,7 +1,7 @@
 'use client'
 
 import dynamic from 'next/dynamic'
-import { ForwardRefExoticComponent, RefAttributes, Suspense } from 'react'
+import { Suspense } from 'react'
 import { Plane } from '@react-three/drei'
 import * as THREE from 'three'
 import { useControls } from 'leva'
@@ -34,6 +34,7 @@ const Common = dynamic<{ color?: string }>(() => import('@/components/canvas/Vie
 
 export default function Page() {
   const { planeScale } = useControls({ planeScale: 160 })
+
   return (
     <div className='mx-auto flex h-full w-full flex-col flex-wrap items-center'>
       <View orbit className='flex h-full w-full flex-col items-center justify-center'>

@@ -1,8 +1,8 @@
 {
-  "name": "react-three-next",
-  "version": "2.0.0",
+  "name": "jenarooo",
+  "version": "1.0.0",
   "authors": [
-    "Renaud ROHLINGER <https://twitter.com/onirenaud>"
+    "Jenaro Calvino <https://twitter.com/cjenaro>"
   ],
   "license": "MIT",
   "private": true,
@@ -11,10 +11,12 @@
   },
   "dependencies": {
     "@ducanh2912/next-pwa": "^9.4.0",
+    "@gsap/react": "^2.1.0",
     "@react-spring/three": "^9.7.3",
     "@react-three/drei": "^9.80.2",
     "@react-three/fiber": "^8.13.6",
     "glsl-random": "^0.0.5",
+    "gsap": "^3.12.5",
     "leva": "^0.9.35",
     "next": "^13.4.13",
     "react": "^18.2.0",
