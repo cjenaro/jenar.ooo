@@ -28,6 +28,7 @@ export function Arcade(props) {
     intensity,
     color,
     size,
+    screenPosition,
   } = useControls('buttons', {
     box: folder({
       boxPosition: [-0.307, -0.296, 0.115],
@@ -45,6 +46,9 @@ export function Arcade(props) {
       intensity: 50,
       color: '#ff618a',
       size: [2, 1],
+    }),
+    'Screen Position': folder({
+      screenPosition: [0, 0, 0],
     }),
   })
 
@@ -87,6 +91,7 @@ export function Arcade(props) {
             receiveShadow
             geometry={nodes.Cube001_2.geometry}
             material={materials['3']}
+            position={screenPosition}
           />
           <MeshPortalMaterial ref={portalRef} side={THREE.DoubleSide}>
             <rectAreaLight
