@@ -29,6 +29,9 @@ dependencies:
   leva:
     specifier: ^0.9.35
     version: 0.9.35(@types/react@18.2.34)(react-dom@18.2.0)(react@18.2.0)
+  maath:
+    specifier: ^0.10.7
+    version: 0.10.7(@types/three@0.158.1)(three@0.154.0)
   next:
     specifier: ^13.4.13
     version: 13.4.13(@babel/core@7.23.2)(react-dom@18.2.0)(react@18.2.0)
@@ -4626,6 +4629,16 @@ packages:
     engines: {node: '>=10'}
     dependencies:
       yallist: 4.0.0
+
+  /maath@0.10.7(@types/three@0.158.1)(three@0.154.0):
+    resolution: {integrity: sha512-zQ2xd7dNOIVTjAS+hj22fyj1EFYmOJX6tzKjZ92r6WDoq8hyFxjuGA2q950tmR4iC/EKXoMQdSipkaJVuUHDTg==}
+    peerDependencies:
+      '@types/three': '>=0.144.0'
+      three: '>=0.144.0'
+    dependencies:
+      '@types/three': 0.158.1
+      three: 0.154.0
+    dev: false
 
   /maath@0.6.0(@types/three@0.158.1)(three@0.154.0):
     resolution: {integrity: sha512-dSb2xQuP7vDnaYqfoKzlApeRcR2xtN8/f7WV/TMAkBC8552TwTLtOO0JTcSygkYMjNDPoo6V01jTw/aPi4JrMw==}
