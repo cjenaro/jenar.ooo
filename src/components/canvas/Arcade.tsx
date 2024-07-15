@@ -107,7 +107,7 @@ export function Arcade(props) {
           distanceFactor={1}
         >
           <iframe
-            src='https://godotcvgame.netlify.app'
+            src='/game'
             style={{
               width: '760px',
               height: '450px',
