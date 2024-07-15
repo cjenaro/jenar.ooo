@@ -59,7 +59,7 @@ export function Arcade(props) {
       size: [2, 1],
     }),
     Screen: folder({
-      screenPosition: { value: { x: 0, y: -0.1, z: 0 }, x: { step: 0.1 }, y: { step: 0.01 } },
+      screenPosition: { value: { x: 0, y: -0.01, z: 0 }, x: { step: 0.1 }, y: { step: 0.01 } },
       screenRotation: { value: { x: 0.14, y: 0, z: 0 }, x: { step: 0.1 }, y: { step: 0.01 } },
       screenSize: { value: { w: 800, h: 450 } },
     }),
