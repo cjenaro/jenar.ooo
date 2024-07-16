@@ -8,6 +8,6 @@
 
 [[redirects]]
   force = true
-  from = "/game/*"
+  from = "/game"
   status = 200
-  to = "https://godotcvgame.netlify.app/:splat"
+  to = "https://godotcvgame.netlify.app"
