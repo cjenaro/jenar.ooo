@@ -4,7 +4,7 @@ import dynamic from 'next/dynamic'
 import { Suspense } from 'react'
 import { Plane } from '@react-three/drei'
 import * as THREE from 'three'
-import { useControls } from 'leva'
+import { Leva, useControls } from 'leva'
 import { ViewProps } from '@/components/canvas/View'
 
 const Arcade = dynamic(() => import('@/components/canvas/Arcade').then((mod) => mod.Arcade), { ssr: false })
@@ -46,6 +46,8 @@ export default function Page() {
           <Common color='#ff618a' />
         </Suspense>
       </View>
+
+      <Leva hidden={process.env.NODE_ENV === 'production'} />
     </div>
   )
 }
