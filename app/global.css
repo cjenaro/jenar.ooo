@@ -17,3 +17,79 @@
     overflow: hidden;
   }
 }
+
+.game-menu {
+  display: grid;
+  place-items: center;
+  width: 760px;
+  height: 450px;
+  border: none;
+  transform: scale(1);
+  transform-origin: center center;
+  border-radius: 52px;
+  color: #eee;
+  padding: 2em;
+  grid-template-rows: 1fr 1fr 4fr;
+  text-align: center;
+  gap: 1em;
+
+  background-color: #000; /* Night sky background color */
+  background-image: radial-gradient(circle at 10px 10px, #fff, transparent 2px),
+    radial-gradient(circle at 30px 50px, #fff, transparent 2px),
+    radial-gradient(circle at 70px 90px, #fff, transparent 2px),
+    radial-gradient(circle at 90px 150px, #fff, transparent 2px),
+    radial-gradient(circle at 150px 200px, #fff, transparent 2px),
+    radial-gradient(circle at 200px 250px, #fff, transparent 2px),
+    radial-gradient(circle at 250px 300px, #fff, transparent 2px),
+    radial-gradient(circle at 300px 350px, #fff, transparent 2px),
+    radial-gradient(circle at 350px 400px, #fff, transparent 2px),
+    radial-gradient(circle at 400px 450px, #fff, transparent 2px),
+    radial-gradient(circle at 450px 500px, #fff, transparent 2px),
+    radial-gradient(circle at 500px 550px, #fff, transparent 2px),
+    radial-gradient(circle at 550px 600px, #fff, transparent 2px);
+  background-size: 10% 20%;
+  background-repeat: repeat;
+}
+
+.game-menu > * {
+  max-width: 400px;
+  width: 100%;
+}
+
+.game-menu h1 {
+  font-size: 2rem;
+}
+
+.game-menu nav {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5em;
+}
+
+.game-menu button,
+.game-menu a {
+  position: relative;
+}
+
+.game-menu button:focus,
+.game-menu a:focus {
+  outline: 0;
+}
+
+.game-menu button.focused::before,
+.game-menu a.focused::before {
+  content: url('/img/hand.png');
+  display: inline-block;
+  transform: scale(2) translateX(-10px) rotate(105deg);
+  animation: float 0.6s ease infinite alternate;
+}
+
+@keyframes float {
+  from {
+    transform: scale(2) translateX(-20px) rotate(105deg);
+  }
+
+  to {
+    transform: scale(2) translateX(-18px) rotate(100deg);
+  }
+}

@@ -10,37 +10,18 @@ import Joystick from './Joystick'
 import Switches from './Switches'
 import { useGSAP } from '@gsap/react'
 import gsap from 'gsap'
-import { extend, Euler } from '@react-three/fiber'
-import * as THREE from 'three'
+import { extend } from '@react-three/fiber'
 
 import { geometry } from 'maath'
+import Screen from './Screen'
 
 extend({ RoundedPlaneGeometry: geometry.RoundedPlaneGeometry })
-
-function toEuler({ x, y, z }: { x: number; y: number; z: number }): Euler {
-  return [x, y, z]
-}
-
-function toVec3({ x, y, z }: { x: number; y: number; z: number }): THREE.Vector3 {
-  return new THREE.Vector3(x, y, z)
-}
 
 export function Arcade(props) {
   //@ts-ignore
   const { nodes, materials } = useGLTF('/arcade.glb')
 
-  const {
-    screenSize,
-    bPosition,
-    aPosition,
-    boxPosition,
-    cPosition,
-    dPosition,
-    ePosition,
-    fPosition,
-    screenPosition,
-    screenRotation,
-  } = useControls('buttons', {
+  const { bPosition, aPosition, cPosition, dPosition, ePosition, fPosition } = useControls('buttons', {
     box: folder({
       boxPosition: [-0.307, -0.296, 0.115],
     }),
@@ -57,11 +38,6 @@ export function Arcade(props) {
       intensity: 50,
       color: '#ff618a',
       size: [2, 1],
-    }),
-    Screen: folder({
-      screenPosition: { value: { x: 0, y: -0.01, z: 0 }, x: { step: 0.1 }, y: { step: 0.01 } },
-      screenRotation: { value: { x: 0.14, y: 0, z: 0 }, x: { step: 0.1 }, y: { step: 0.01 } },
-      screenSize: { value: { w: 800, h: 450 } },
     }),
     Plane: folder({
       planeRotation: [0.15, 0, 0],
@@ -92,38 +68,7 @@ export function Arcade(props) {
         <mesh castShadow receiveShadow geometry={nodes.Cube001_3.geometry} material={materials['4']} />
       </group>
 
-      <mesh
-        castShadow
-        receiveShadow
-        geometry={nodes.parent.geometry}
-        material={materials['3']}
-        position={[-0.4, 0.286, -0.06]}
-      >
-        <Html
-          position={toVec3(screenPosition)} // Position of the iframe relative to the mesh
-          transform
-          rotation={toEuler(screenRotation)}
-          occlude
-          distanceFactor={1}
-        >
-          <iframe
-            src='/game'
-            allowTransparency
-            allowFullScreen
-            frameBorder={0}
-            scrolling='no'
-            allow='autoplay; fullscreen *; geolocation; microphone; camera; midi; monetization; xr-spatial-tracking; gamepad; gyroscope; accelerometer; xr; cross-origin-isolated; web-share'
-            style={{
-              width: '760px',
-              height: '450px',
-              border: 'none',
-              transform: 'scale(1)',
-              transformOrigin: 'center center',
-              borderRadius: '52px',
-            }}
-          />
-        </Html>
-      </mesh>
+      <Screen geometry={nodes.parent.geometry} material={materials['3']} />
       <group name='roundButtons'>
         <RoundButton
           position={aPosition}

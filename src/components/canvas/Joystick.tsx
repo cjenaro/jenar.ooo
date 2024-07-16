@@ -1,6 +1,5 @@
 import { animated, useSpring } from '@react-spring/three'
-import { useEffect, useState } from 'react'
-
+import { MutableRefObject, useEffect, useState } from 'react'
 type Direction = 'left' | 'right' | 'up' | 'down' | 'center'
 
 export default function Joystick({ material, whiteMaterial, stickGeometry, whiteGeometry }) {

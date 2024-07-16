@@ -1,8 +1,9 @@
-const title = 'React Three Next Starter'
-const url = 'https://react-three-next.vercel.app/'
-const description = 'The easiest and fastest way to create a 3D website using React Three Fiber and NextJS'
+/* eslint-disable @next/next/no-page-custom-font */
+const title = "Jenaro Calviño's resume"
+const url = 'https://jenar.ooo/'
+const description = 'This is my resume'
 const author = 'Author'
-const twitter = '@pmndrs'
+const twitter = '@cjenaro'
 
 export default function Head() {
   return (
@@ -55,6 +56,10 @@ export default function Head() {
         Be sure validate your Twitter card markup on the documentation site. */}
       <meta name='twitter:card' content='summary' />
       <meta name='twitter:site' content={twitter} />
+
+      <link rel='preconnect' href='https://fonts.googleapis.com' />
+      <link rel='preconnect' href='https://fonts.gstatic.com' crossOrigin='' />
+      <link href='https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap' rel='stylesheet' />
     </>
   )
 }
