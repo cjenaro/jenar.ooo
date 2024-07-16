@@ -10,4 +10,4 @@
   force = true
   from = "/game"
   status = 200
-  to = "https://cjenaro.itch.io/cv"
+  to = "https://html.itch.zone/html/10923718/godot-platformer-cv/index.html"
