@@ -37,7 +37,10 @@ export default function Page() {
 
   return (
     <div className='mx-auto flex h-full w-full flex-col flex-wrap items-center'>
-      <View orbit className='flex h-full w-full flex-col items-center justify-center'>
+      <View
+        orbit={process.env.NODE_ENV !== 'production'}
+        className='flex h-full w-full flex-col items-center justify-center'
+      >
         <Suspense fallback={null}>
           <Arcade />
           <Plane position={[0, -1.5, 0]} scale={planeScale} rotation-x={Math.PI / 2} castShadow receiveShadow>
