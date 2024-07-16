@@ -108,6 +108,11 @@ export function Arcade(props) {
         >
           <iframe
             src='/game'
+            allowTransparency
+            allowFullScreen
+            frameBorder={0}
+            scrolling='no'
+            allow='autoplay; fullscreen *; geolocation; microphone; camera; midi; monetization; xr-spatial-tracking; gamepad; gyroscope; accelerometer; xr; cross-origin-isolated; web-share'
             style={{
               width: '760px',
               height: '450px',

@@ -8,6 +8,6 @@
 
 [[redirects]]
   force = true
-  from = "/game"
+  from = "/game/*"
   status = 200
-  to = "https://html.itch.zone/html/10923718/godot-platformer-cv/index.html"
+  to = "https://html.itch.zone/html/10923718/godot-platformer-cv/:splat"
