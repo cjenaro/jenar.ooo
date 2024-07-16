@@ -83,12 +83,6 @@ export function Arcade(props) {
     }
   })
 
-  const [isIframeLoaded, setIsIframeLoaded] = useState(false)
-
-  const handleLoaded = () => {
-    setIsIframeLoaded(true)
-  }
-
   return (
     <group {...props} dispose={null} ref={arcadeRef}>
       <group position={[-0.307, -0.296, 0.115]}>
@@ -122,9 +116,7 @@ export function Arcade(props) {
               transformOrigin: 'center center',
               borderRadius: '52px',
             }}
-            onLoad={handleLoaded}
           />
-          {!isIframeLoaded && <div style={{ color: 'red' }}>Loading...</div>}
         </Html>
       </mesh>
       <group name='roundButtons'>

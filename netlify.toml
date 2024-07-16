@@ -10,4 +10,4 @@
   force = true
   from = "/game"
   status = 200
-  to = "https://godotcvgame.netlify.app"
+  to = "https://cjenaro.itch.io/cv"
