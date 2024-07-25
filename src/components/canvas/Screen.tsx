@@ -2,9 +2,6 @@ import { toVec3, toEuler } from '@/helpers/three-helpers'
 import { Html } from '@react-three/drei'
 import { folder, useControls } from 'leva'
 import { useEffect, useRef, useState } from 'react'
-import localFont from 'next/font/local'
-
-const pixelify = localFont({ src: './PressStart2P-Regular.ttf' })
 
 function focusElement(element?: HTMLElement) {
   element.focus()
@@ -41,7 +38,7 @@ export default function Screen({ geometry, material }) {
     function handleKeyDown(event: KeyboardEvent) {
       if (!ctaRef.current || !linkRef.current) return
 
-      if (event.key === 'ArrowDown') {
+      if (event.key === 'ArrowDown' || event.key === 'ArrowUp') {
         if (ctaRef.current.classList.contains('focused')) {
           focusElement(linkRef.current)
           ctaRef.current.classList.toggle('focused')
@@ -51,7 +48,7 @@ export default function Screen({ geometry, material }) {
         }
       }
 
-      if (event.key === 'Enter') {
+      if (event.key === 'Enter' && ([linkRef.current, ctaRef.current] as Element[]).includes(document.activeElement)) {
         event.preventDefault()
         executeEvent(ctaRef.current, linkRef.current)
       }
@@ -67,7 +64,6 @@ export default function Screen({ geometry, material }) {
   return (
     <mesh castShadow receiveShadow geometry={geometry} material={material} position={[-0.4, 0.286, -0.06]}>
       <Html
-        className={pixelify.className}
         position={toVec3(screenPosition)} // Position of the iframe relative to the mesh
         transform
         rotation={toEuler(screenRotation)}
@@ -79,7 +75,7 @@ export default function Screen({ geometry, material }) {
             <h1>Jenaro Calviño</h1>
             <p>This is my resume, use the keyboard arrows to navigate the menu</p>
             <nav>
-              <button className='focused' ref={ctaRef} autoFocus onClick={handleLoadGame}>
+              <button className='focused' ref={ctaRef} onClick={handleLoadGame}>
                 Play Game!
               </button>
               <a ref={linkRef} href='/cv'>
