@@ -17,7 +17,11 @@ const View = dynamic<ViewProps & { className: string }>(
     ssr: false,
     loading: () => (
       <div className='flex h-full w-full flex-col items-center justify-center bg-pink-500'>
-        <p>Loading...</p>
+        <p>now loading...</p>
+
+        <div className='mt-4 w-4/12 h-2 flex bg-white overflow-hidden'>
+          <div className='progress h-2 w-1 bg-pink-900'></div>
+        </div>
       </div>
     ),
   },

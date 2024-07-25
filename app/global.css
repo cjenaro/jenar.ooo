@@ -99,3 +99,16 @@
     transform: scale(2) translateX(-18px) rotate(100deg);
   }
 }
+
+.progress {
+  animation: progress 3s cubic-bezier(0, 0.77, 0.52, -0.22) infinite;
+}
+
+@keyframes progress {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(71);
+  }
+}
