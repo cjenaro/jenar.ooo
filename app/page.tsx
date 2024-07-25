@@ -8,6 +8,8 @@ import { Leva, useControls } from 'leva'
 import { ViewProps } from '@/components/canvas/View'
 
 const Arcade = dynamic(() => import('@/components/canvas/Arcade').then((mod) => mod.Arcade), { ssr: false })
+const Title = dynamic(() => import('@/components/canvas/Title').then((mod) => mod.Title), { ssr: false })
+const Instructions = dynamic(() => import('@/components/canvas/Title').then((mod) => mod.Instructions), { ssr: false })
 
 const View = dynamic<ViewProps & { className: string }>(
   () => import('@/components/canvas/View').then((mod) => mod.View),
@@ -42,8 +44,10 @@ export default function Page() {
         className='flex h-full w-full flex-col items-center justify-center'
       >
         <Suspense fallback={null}>
+          <Title />
           <Arcade />
-          <Plane position={[0, -1.5, 0]} scale={planeScale} rotation-x={Math.PI / 2} castShadow receiveShadow>
+          <Instructions />
+          <Plane position={[0, -1.5, 0]} scale={planeScale} rotation-x={Math.PI / 2}  receiveShadow>
             <meshStandardMaterial color='#ff618a' side={THREE.DoubleSide} />
           </Plane>
           <Common color='#ff618a' />

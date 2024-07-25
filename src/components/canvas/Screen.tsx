@@ -39,6 +39,8 @@ export default function Screen({ geometry, material }) {
 
   useEffect(() => {
     function handleKeyDown(event: KeyboardEvent) {
+      if (!ctaRef.current || !linkRef.current) return
+
       if (event.key === 'ArrowDown') {
         if (ctaRef.current.classList.contains('focused')) {
           focusElement(linkRef.current)
