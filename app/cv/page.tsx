@@ -2,7 +2,7 @@ export default function CV() {
   return (
     <div className='w-full h-full bg-pink-200 p-9'>
       <h1 className='text-lg mb-2'>Hi! My name is Jenaro</h1>
-      <p className='text-xs'>I'm a fullstack developer</p>
+      <p className='text-xs'>I&apos;m a fullstack developer</p>
 
       <p className='text-xs'>I made this website with NextJS, THREE and Godot (the game)</p>
 
