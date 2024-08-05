@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useRef } from 'react'
+import { useCallback, useEffect, useRef } from 'react'
 import { useGLTF } from '@react-three/drei'
 import { folder, useControls } from 'leva'
 import RoundButton from './RoundButton'
@@ -58,8 +58,8 @@ function useCameraAnimation() {
 }
 
 export function Arcade(props) {
-  //@ts-ignore
   const { nodes, materials } = useGLTF('/arcade.glb')
+  const nodesWithGeometry = nodes as { [name: string]: typeof nodes[''] & { geometry: any } }
 
   const { bPosition, aPosition, cPosition, dPosition, ePosition, fPosition } = useControls('buttons', {
     box: folder({
@@ -95,53 +95,53 @@ export function Arcade(props) {
   return (
     <group {...props} dispose={null} ref={arcadeRef}>
       <group position={[-0.307, -0.296, 0.115]}>
-        <mesh castShadow receiveShadow geometry={nodes.Cube001.geometry} material={materials['1']} />
-        <mesh castShadow receiveShadow geometry={nodes.Cube001_1.geometry} material={materials['2']} />
-        <mesh castShadow receiveShadow geometry={nodes.Cube001_2.geometry} material={materials['3']} />
-        <mesh castShadow receiveShadow geometry={nodes.Cube001_3.geometry} material={materials['4']} />
+        <mesh castShadow receiveShadow geometry={nodesWithGeometry.Cube001.geometry} material={materials['1']} />
+        <mesh castShadow receiveShadow geometry={nodesWithGeometry.Cube001_1.geometry} material={materials['2']} />
+        <mesh castShadow receiveShadow geometry={nodesWithGeometry.Cube001_2.geometry} material={materials['3']} />
+        <mesh castShadow receiveShadow geometry={nodesWithGeometry.Cube001_3.geometry} material={materials['4']} />
       </group>
 
-      <Screen geometry={nodes.parent.geometry} material={materials['3']} />
+      <Screen geometry={nodesWithGeometry.parent.geometry} material={materials['3']} />
       <group name='roundButtons'>
         <RoundButton
           position={aPosition}
-          bodyGeometry={nodes.Cube002.geometry}
+          bodyGeometry={nodesWithGeometry.Cube002.geometry}
           bodyMaterial={roundButtonBodyMaterial}
-          tipGeometry={nodes.Cube002_1.geometry}
+          tipGeometry={nodesWithGeometry.Cube002_1.geometry}
           tipMaterial={roundButtonTipMaterial}
         />
         <RoundButton
           position={bPosition}
-          bodyGeometry={nodes.Cube003.geometry}
+          bodyGeometry={nodesWithGeometry.Cube003.geometry}
           bodyMaterial={roundButtonBodyMaterial}
-          tipGeometry={nodes.Cube003_1.geometry}
+          tipGeometry={nodesWithGeometry.Cube003_1.geometry}
           tipMaterial={roundButtonTipMaterial}
         />
         <RoundButton
           position={cPosition}
-          bodyGeometry={nodes.Cube004.geometry}
+          bodyGeometry={nodesWithGeometry.Cube004.geometry}
           bodyMaterial={roundButtonBodyMaterial}
-          tipGeometry={nodes.Cube004_1.geometry}
+          tipGeometry={nodesWithGeometry.Cube004_1.geometry}
           tipMaterial={roundButtonTipMaterial}
         />
         <RoundButton
           position={dPosition}
-          bodyGeometry={nodes.Cube005.geometry}
+          bodyGeometry={nodesWithGeometry.Cube005.geometry}
           bodyMaterial={roundButtonBodyMaterial}
-          tipGeometry={nodes.Cube005_1.geometry}
+          tipGeometry={nodesWithGeometry.Cube005_1.geometry}
           tipMaterial={roundButtonTipMaterial}
         />
         <RoundButton
           position={ePosition}
-          bodyGeometry={nodes.Cube006.geometry}
+          bodyGeometry={nodesWithGeometry.Cube006.geometry}
           bodyMaterial={roundButtonBodyMaterial}
-          tipGeometry={nodes.Cube006_1.geometry}
+          tipGeometry={nodesWithGeometry.Cube006_1.geometry}
           tipMaterial={roundButtonTipMaterial}
         />
         <RoundButton
           position={fPosition}
-          bodyGeometry={nodes.Cube007.geometry}
-          tipGeometry={nodes.Cube007_1.geometry}
+          bodyGeometry={nodesWithGeometry.Cube007.geometry}
+          tipGeometry={nodesWithGeometry.Cube007_1.geometry}
           bodyMaterial={roundButtonBodyMaterial}
           tipMaterial={roundButtonTipMaterial}
         />
@@ -149,10 +149,10 @@ export function Arcade(props) {
       <Joystick
         material={roundButtonBodyMaterial}
         whiteMaterial={roundButtonTipMaterial}
-        stickGeometry={nodes.Cube008.geometry}
-        whiteGeometry={nodes.Cube008_1.geometry}
+        stickGeometry={nodesWithGeometry.Cube008.geometry}
+        whiteGeometry={nodesWithGeometry.Cube008_1.geometry}
       />
-      <Switches material={roundButtonBodyMaterial} geometry={nodes.button006.geometry} />
+      <Switches material={roundButtonBodyMaterial} geometry={nodesWithGeometry.button006.geometry} />
     </group>
   )
 }
