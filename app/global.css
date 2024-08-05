@@ -143,27 +143,27 @@
 }
 
 .bg {
-  background-image: url('https://assets.codepen.io/3864932/bg.png');
+  background-image: url('/assets/cv/bg.png');
   background-size: cover;
   background-position: center;
 }
 
 .clouds {
-  background-image: url('https://assets.codepen.io/3864932/clouds.png');
+  background-image: url('/assets/cv/clouds.png');
   animation: move-x 7s steps(60) infinite, move-y 3s steps(2) infinite;
   height: 50vh;
   max-height: 500px;
 }
 
 .clouds-front {
-  background-image: url('https://assets.codepen.io/3864932/cloudsfront.png');
+  background-image: url('/assets/cv/cloudsfront.png');
   animation: move-x 4s steps(60) infinite, move-y 1s steps(2) infinite;
   height: 50vh;
   max-height: 500px;
 }
 
 .beach {
-  background-image: url('https://assets.codepen.io/3864932/beach.png');
+  background-image: url('/assets/cv/beach.png');
   animation: move-x 15s steps(120) infinite;
   background-position-y: bottom;
   height: 60vh;
@@ -184,7 +184,7 @@
 .char {
   --size: 64px;
   --steps: 5;
-  background-image: url('https://assets.codepen.io/3864932/character.png');
+  background-image: url('/assets/cv/character.png');
   bottom: 30px;
   left: 50px;
 
