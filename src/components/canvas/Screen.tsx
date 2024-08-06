@@ -30,6 +30,7 @@ export default function Screen({ geometry, material }) {
   const [loadGame, setLoadGame] = useState(false)
   const ctaRef = useRef<HTMLButtonElement>()
   const linkRef = useRef<HTMLAnchorElement>()
+  const iframeRef = useRef<HTMLIFrameElement>()
 
   function handleLoadGame() {
     setLoadGame(true)
@@ -61,6 +62,10 @@ export default function Screen({ geometry, material }) {
       window.removeEventListener('keydown', handleKeyDown)
     }
   }, [])
+
+  function requestFullScreen() {
+    iframeRef.current.requestFullscreen()
+  }
 
   return (
     <mesh castShadow receiveShadow geometry={geometry} material={material} position={[-0.4, 0.286, -0.06]}>
@@ -95,7 +100,10 @@ export default function Screen({ geometry, material }) {
           </div>
         ) : (
           <>
-            <Link href='/game' className='absolute bottom-6 right-6 bg-pink-50/50 rounded w-8 h-8 z-10'>
+            <button
+              onClick={requestFullScreen}
+              className='absolute bottom-6 right-6 bg-pink-50/50 rounded w-8 h-8 z-10'
+            >
               <svg
                 xmlns='http://www.w3.org/2000/svg'
                 fill='none'
@@ -111,8 +119,9 @@ export default function Screen({ geometry, material }) {
                   d='M3.75 3.75v4.5m0-4.5h4.5m-4.5 0L9 9M3.75 20.25v-4.5m0 4.5h4.5m-4.5 0L9 15M20.25 3.75h-4.5m4.5 0v4.5m0-4.5L15 9m5.25 11.25h-4.5m4.5 0v-4.5m0 4.5L15 15'
                 />
               </svg>
-            </Link>
+            </button>
             <iframe
+              ref={iframeRef}
               src='/game'
               allowTransparency
               allowFullScreen
