@@ -1,12 +1,22 @@
-import { animated, useSpring } from '@react-spring/three'
+import { useGSAP } from '@gsap/react'
+import gsap from 'gsap'
 import { ThreeEvent } from '@react-three/fiber'
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
+import * as THREE from 'three'
 
 function Switch({ material, geometry, position }) {
   const [clicked, setClicked] = useState<'up' | 'down' | null>(null)
-  const { rotation } = useSpring<{ rotation: [x: number, y: number, z: number] }>({
-    rotation: clicked === 'down' ? [0.2, 0, 0] : clicked === 'up' ? [-0.2, 0, 0] : [0, 0, 0],
-  })
+
+  const meshRef = useRef<THREE.Group<THREE.Object3DEventMap>>()
+  useGSAP(() => {
+    if (!meshRef.current) return
+
+    gsap.to(meshRef.current.rotation, {
+      x: clicked === 'down' ? 0.2 : clicked === 'up' ? -0.2 : 0,
+      y: 0,
+      z: 0,
+    })
+  }, [clicked])
 
   function handleClicked(event: ThreeEvent<MouseEvent>) {
     const dir = event.intersections[0].uv.y > 0.39 ? 'up' : 'down'
@@ -26,14 +36,14 @@ function Switch({ material, geometry, position }) {
   }, [clicked])
 
   return (
-    <animated.mesh
+    <mesh
+      ref={meshRef}
       castShadow
       receiveShadow
       onClick={handleClicked}
       geometry={geometry}
       material={material}
       position={position}
-      rotation={rotation as unknown as [x: number, y: number, z: number]}
     />
   )
 }

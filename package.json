@@ -12,7 +12,6 @@
   "dependencies": {
     "@ducanh2912/next-pwa": "^9.4.0",
     "@gsap/react": "^2.1.0",
-    "@react-spring/three": "^9.7.3",
     "@react-three/drei": "^9.109.2",
     "@react-three/fiber": "^8.16.8",
     "glsl-random": "^0.0.5",
