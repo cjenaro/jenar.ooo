@@ -1,15 +1,21 @@
-import { animated, config, useSpring } from '@react-spring/three'
-import { useEffect, useState } from 'react'
+import { useGSAP } from '@gsap/react'
+import gsap from 'gsap'
+import { useEffect, useRef, useState } from 'react'
+import * as THREE from 'three'
 
 export default function RoundButton({ position, bodyMaterial, bodyGeometry, tipMaterial, tipGeometry }) {
   const [active, setActive] = useState(false)
-  const { y } = useSpring({
-    y: active ? position[1] - 0.03 : position[1],
-    config: {
-      ...config.default,
-      mass: 0.02,
-    },
-  })
+
+  const groupRef = useRef<THREE.Group<THREE.Object3DEventMap>>()
+  const originalYPosition = useRef(position[1])
+  useGSAP(() => {
+    if (!groupRef.current) return
+
+    gsap.to(groupRef.current.position, {
+      ...groupRef.current.position,
+      y: active ? originalYPosition.current - 0.03 : originalYPosition.current,
+    })
+  }, [active])
 
   function handleAnimation() {
     setActive(!active)
@@ -28,9 +34,9 @@ export default function RoundButton({ position, bodyMaterial, bodyGeometry, tipM
   }, [active])
 
   return (
-    <animated.group onClick={handleAnimation} position={position} position-y={y}>
+    <group ref={groupRef} onClick={handleAnimation} position={position}>
       <mesh castShadow receiveShadow geometry={bodyGeometry} material={bodyMaterial} />
       <mesh castShadow receiveShadow geometry={tipGeometry} material={tipMaterial} />
-    </animated.group>
+    </group>
   )
 }

@@ -1,5 +1,7 @@
-import { animated, useSpring } from '@react-spring/three'
-import { MutableRefObject, useEffect, useState } from 'react'
+import { useGSAP } from '@gsap/react'
+import gsap from 'gsap'
+import { useEffect, useRef, useState } from 'react'
+import * as THREE from 'three'
 type Direction = 'left' | 'right' | 'up' | 'down' | 'center'
 
 export default function Joystick({ material, whiteMaterial, stickGeometry, whiteGeometry }) {
@@ -11,10 +13,18 @@ export default function Joystick({ material, whiteMaterial, stickGeometry, white
     left: [0, 0, 1],
     right: [0, 0, -1],
   }
+  const groupRef = useRef<THREE.Group<THREE.Object3DEventMap>>()
+  useGSAP(() => {
+    if (!groupRef.current) return
 
-  const { rotation: springRotation } = useSpring<{ rotation: [x: number, y: number, z: number] }>({
-    rotation: directions[direction],
-  })
+    const [x, y, z] = directions[direction]
+
+    gsap.to(groupRef.current.rotation, {
+      x,
+      y,
+      z,
+    })
+  }, [direction])
 
   useEffect(() => {
     function keyboardListener(event: KeyboardEvent) {
@@ -60,12 +70,9 @@ export default function Joystick({ material, whiteMaterial, stickGeometry, white
   }, [direction])
 
   return (
-    <animated.group
-      position={[-1.077, -0.664, 0.514]}
-      rotation={springRotation as unknown as [x: number, y: number, z: number]}
-    >
+    <group ref={groupRef} position={[-1.077, -0.664, 0.514]}>
       <mesh castShadow receiveShadow geometry={stickGeometry} material={material} />
       <mesh castShadow receiveShadow geometry={whiteGeometry} material={whiteMaterial} />
-    </animated.group>
+    </group>
   )
 }

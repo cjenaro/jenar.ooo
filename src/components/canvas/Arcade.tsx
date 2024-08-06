@@ -15,11 +15,13 @@ extend({ RoundedPlaneGeometry: geometry.RoundedPlaneGeometry })
 
 function useCameraAnimation() {
   const camera = useThree((state) => state.camera)
+  const hasRan = useRef(false)
 
   const { contextSafe } = useGSAP()
 
   const animate = contextSafe(() => {
-    if (camera) {
+    if (camera && !hasRan.current) {
+      hasRan.current = true
       gsap.to(camera.position, {
         x: -0.4,
         y: 0.9,
