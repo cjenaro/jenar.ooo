@@ -3,6 +3,7 @@ import { Html } from '@react-three/drei'
 import { folder, useControls } from 'leva'
 import Link from 'next/link'
 import { useEffect, useRef, useState } from 'react'
+import { isMobile, isSafari } from 'react-device-detect'
 
 function focusElement(element?: HTMLElement) {
   element.focus()
@@ -75,6 +76,7 @@ export default function Screen({ geometry, material }) {
         rotation={toEuler(screenRotation)}
         occlude
         distanceFactor={1}
+        className={isSafari && isMobile ? 'mt-[-260px]' : ''}
       >
         {!loadGame ? (
           <div className='w-full h-full relative rounded-[52px] overflow-hidden'>

@@ -19,19 +19,7 @@ const Layout = ({ children }) => {
       }}
     >
       {children}
-      <Scene
-        style={{
-          position: 'fixed',
-          top: 0,
-          left: 0,
-          width: '100vw',
-          height: '100vh',
-          pointerEvents: 'none',
-        }}
-        shadows
-        eventSource={ref}
-        eventPrefix='client'
-      />
+      <Scene shadows eventSource={ref} eventPrefix='client' />
     </div>
   )
 }
