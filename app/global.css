@@ -164,7 +164,7 @@
 
 .char {
   --size: 64px;
-  --steps: 5;
+  --steps: 4;
   background-image: url('/assets/cv/character.png');
   bottom: 30px;
   left: 50px;
