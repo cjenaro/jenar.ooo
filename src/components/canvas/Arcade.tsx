@@ -10,6 +10,7 @@ import { extend, useThree } from '@react-three/fiber'
 
 import { geometry } from 'maath'
 import Screen from './Screen'
+import { type BufferGeometry } from 'three'
 
 extend({ RoundedPlaneGeometry: geometry.RoundedPlaneGeometry })
 
@@ -61,7 +62,7 @@ function useCameraAnimation() {
 
 export function Arcade(props) {
   const { nodes, materials } = useGLTF('/arcade.glb')
-  const nodesWithGeometry = nodes as { [name: string]: typeof nodes[''] & { geometry: any } }
+  const nodesWithGeometry = nodes as { [name: string]: typeof nodes[''] & { geometry: BufferGeometry } }
 
   const { bPosition, aPosition, cPosition, dPosition, ePosition, fPosition } = useControls('buttons', {
     box: folder({

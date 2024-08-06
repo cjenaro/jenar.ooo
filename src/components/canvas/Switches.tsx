@@ -7,7 +7,7 @@ import * as THREE from 'three'
 function Switch({ material, geometry, position }) {
   const [clicked, setClicked] = useState<'up' | 'down' | null>(null)
 
-  const meshRef = useRef<THREE.Group<THREE.Object3DEventMap>>()
+  const meshRef = useRef<THREE.Mesh<THREE.BufferGeometry>>()
   useGSAP(() => {
     if (!meshRef.current) return
 
