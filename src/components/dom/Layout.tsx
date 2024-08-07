@@ -19,7 +19,7 @@ const Layout = ({ children }) => {
       }}
     >
       {children}
-      <Scene shadows eventSource={ref} eventPrefix='client' />
+      <Scene shadows eventSource={ref} />
     </div>
   )
 }

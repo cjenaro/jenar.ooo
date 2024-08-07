@@ -10,6 +10,7 @@ export default function Scene({ ...props }) {
     <Canvas
       {...props}
       style={{ position: 'fixed', top: 0, left: 0, width: '100dvw', height: '100dvh', pointerEvents: 'none' }}
+      eventPrefix='client'
     >
       {/* @ts-ignore */}
       <r3f.Out />

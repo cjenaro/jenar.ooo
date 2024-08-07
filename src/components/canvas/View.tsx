@@ -23,7 +23,7 @@ export const Common = ({ color }: CommonProps) => {
   return (
     <Suspense fallback={null}>
       {color && <color attach='background' args={[color]} />}
-      <ambientLight intensity={1} />
+      <ambientLight intensity={2} />
       <fog attach='fog' color={fogColor} near={fog.near} far={fog.far} />
       <directionalLight castShadow color='#ff618a' position={lightPosition} intensity={intensity} />
       <PerspectiveCamera makeDefault fov={50} position={[8.8, 0.8, 8]} />

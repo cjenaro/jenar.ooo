@@ -1,64 +1,16 @@
-import { useCallback, useEffect, useRef } from 'react'
+import { useRef } from 'react'
 import { useGLTF } from '@react-three/drei'
 import { folder, useControls } from 'leva'
 import RoundButton from './RoundButton'
 import Joystick from './Joystick'
 import Switches from './Switches'
-import { useGSAP } from '@gsap/react'
-import gsap from 'gsap'
-import { extend, useThree } from '@react-three/fiber'
+import { extend } from '@react-three/fiber'
 
 import { geometry } from 'maath'
 import Screen from './Screen'
 import { type BufferGeometry } from 'three'
 
 extend({ RoundedPlaneGeometry: geometry.RoundedPlaneGeometry })
-
-function useCameraAnimation() {
-  const camera = useThree((state) => state.camera)
-  const hasRan = useRef(false)
-
-  const { contextSafe } = useGSAP()
-
-  const animate = contextSafe(() => {
-    if (camera && !hasRan.current) {
-      hasRan.current = true
-      gsap.to(camera.position, {
-        x: -0.4,
-        y: 0.9,
-        z: 3.6,
-        duration: 1,
-      })
-      gsap.to(camera.rotation, {
-        x: -0.24497866312686414,
-        y: 0.013473386047539958,
-        z: 0.003368231864717482,
-        duration: 1,
-      })
-    }
-  })
-
-  const handleMove = useCallback(
-    (event: KeyboardEvent | MouseEvent) => {
-      if ((event instanceof KeyboardEvent && event.key === 'Enter') || event instanceof MouseEvent) {
-        animate()
-      }
-    },
-    [animate],
-  )
-
-  useEffect(() => {
-    window.addEventListener('click', handleMove)
-    window.addEventListener('keydown', handleMove)
-
-    camera.lookAt(0, 0, 0)
-
-    return () => {
-      window.removeEventListener('click', handleMove)
-      window.removeEventListener('keydown', handleMove)
-    }
-  }, [camera, handleMove])
-}
 
 export function Arcade(props) {
   const { nodes, materials } = useGLTF('/arcade.glb')
@@ -93,7 +45,6 @@ export function Arcade(props) {
   const roundButtonTipMaterial = materials['3']
 
   const arcadeRef = useRef(null)
-  useCameraAnimation()
 
   return (
     <group {...props} dispose={null} ref={arcadeRef}>
