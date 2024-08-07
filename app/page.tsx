@@ -2,7 +2,7 @@
 
 import dynamic from 'next/dynamic'
 import { Suspense } from 'react'
-import { Plane } from '@react-three/drei'
+import { Plane, PresentationControls } from '@react-three/drei'
 import * as THREE from 'three'
 import { Leva, useControls } from 'leva'
 import { ViewProps } from '@/components/canvas/View'
@@ -36,17 +36,16 @@ export default function Page() {
 
   return (
     <div className='mx-auto flex h-full w-full flex-col flex-wrap items-center'>
-      <View
-        orbit={process.env.NODE_ENV !== 'production'}
-        className='flex h-full w-full flex-col items-center justify-center'
-      >
+      <View className='flex h-full w-full flex-col items-center justify-center'>
         <Suspense fallback={null}>
-          <Title />
-          <Arcade />
-          <Instructions />
-          <Plane position={[0, -1.5, 0]} scale={planeScale} rotation-x={Math.PI / 2} receiveShadow>
-            <meshStandardMaterial color='#ff618a' side={THREE.DoubleSide} />
-          </Plane>
+          <PresentationControls>
+            <Title />
+            <Arcade />
+            <Instructions />
+            <Plane position={[0, -1.5, 0]} scale={planeScale} rotation-x={Math.PI / 2} receiveShadow>
+              <meshStandardMaterial color='#ff618a' side={THREE.DoubleSide} />
+            </Plane>
+          </PresentationControls>
           <Common color='#ff618a' />
         </Suspense>
       </View>
