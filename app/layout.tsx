@@ -20,6 +20,8 @@ export default function RootLayout({ children }) {
         head.tsx. Find out more at https://beta.nextjs.org/docs/api-reference/file-conventions/head
       */}
 
+      <script defer data-domain='jenar.ooo' src='https://plausible.io/js/script.js'></script>
+
       <meta charSet='utf-8' />
       <meta name='language' content='english' />
       <meta httpEquiv='content-type' content='text/html' />
@@ -36,7 +38,7 @@ export default function RootLayout({ children }) {
       />
       <meta name='robots' content='index,follow' />
       <meta name='distribution' content='web' />
-      {/* 
+      {/*
       Facebook Open Graph meta tags
         documentation: https://developers.facebook.com/docs/sharing/opengraph */}
       <meta property='og:title' content={title} />
@@ -59,7 +61,7 @@ export default function RootLayout({ children }) {
       <meta name='theme-color' content='#000' />
       <link rel='shortcut icon' href='/icons/apple-touch-icon.png' />
 
-      {/* 
+      {/*
       Twitter Summary card
         documentation: https://dev.twitter.com/cards/getting-started
         Be sure validate your Twitter card markup on the documentation site. */}
