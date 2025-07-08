@@ -19,8 +19,8 @@ export default function PrivacyPolicy() {
           <section>
             <h3 className='mb-3 text-xl font-semibold text-gray-900'>Data Collection</h3>
             <p className='mb-4'>
-              The AFIP Invoice Helper extension only stores data locally on your device using Chrome's storage API. We
-              do not collect, transmit, or store any personal information on external servers.
+              The AFIP Invoice Helper extension only stores data locally on your device using Chrome&apos;s storage API.
+              We do not collect, transmit, or store any personal information on external servers.
             </p>
           </section>
 
@@ -55,16 +55,16 @@ export default function PrivacyPolicy() {
           <section>
             <h3 className='mb-3 text-xl font-semibold text-gray-900'>Data Security</h3>
             <p className='mb-4'>
-              All data is stored locally on your device using Chrome's secure storage mechanisms. No data is transmitted
-              to external servers or third parties.
+              All data is stored locally on your device using Chrome&apos;s secure storage mechanisms. No data is
+              transmitted to external servers or third parties.
             </p>
           </section>
 
           <section>
             <h3 className='mb-3 text-xl font-semibold text-gray-900'>Data Deletion</h3>
             <p className='mb-4'>
-              You can delete all stored data by uninstalling the extension or clearing the extension's data through
-              Chrome's extension management interface.
+              You can delete all stored data by uninstalling the extension or clearing the extension&apos;s data through
+              Chrome&apos;s extension management interface.
             </p>
           </section>
         </div>
