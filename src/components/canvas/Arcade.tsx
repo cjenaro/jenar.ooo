@@ -14,7 +14,7 @@ extend({ RoundedPlaneGeometry: geometry.RoundedPlaneGeometry })
 
 export function Arcade(props) {
   const { nodes, materials } = useGLTF('/arcade.glb')
-  const nodesWithGeometry = nodes as { [name: string]: typeof nodes[''] & { geometry: BufferGeometry } }
+  const nodesWithGeometry = nodes as { [name: string]: (typeof nodes)[''] & { geometry: BufferGeometry } }
 
   const { bPosition, aPosition, cPosition, dPosition, ePosition, fPosition } = useControls('buttons', {
     box: folder({
